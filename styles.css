@@ -1,0 +1,104 @@
+ body,
+ html {
+     height: 100%;
+     margin: 0;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+
+ body {
+     background-image: url('./img/background.jpg');
+     background-size: cover;
+     background-repeat: no-repeat;
+     background-position: center;
+ }
+
+ .expressions_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f1e1c7;
+    text-align: center;
+    padding: 30px 80px;
+    border-radius: 10px;
+    color: black;
+    position: relative;
+    z-index: 1;
+ }
+
+ .expression {
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px 0;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+ }
+
+ .math_expression_container {
+     display: flex;
+     align-items: center;
+     width: 100%;
+ }
+
+ .math_expression {
+     flex-grow: 1;
+     margin-right: 5px;
+     text-align: right;
+ }
+
+ .operator {
+     margin: 0 5px;
+ }
+
+ .answer_input {
+    width: 35px;
+    font-size: 20px;
+ }
+
+ button {
+    font-size: 15px;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 10px 20px;
+    border: none;   
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+ }
+
+ button:hover {
+     background-color: #dfdfdf;
+ }
+
+ button:active {
+     background-color: #b7b7b7;
+ }
+
+ 
+ .counter {
+    font-size: 20px;
+    margin-top: 20px;
+ }
+
+ .background {
+     position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     z-index: 0;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+.wrong_answer {
+    background-color: rgb(247, 57, 57);
+}
+
+.right_answer {
+    background-color: rgb(86, 255, 100);
+}
