@@ -49,21 +49,28 @@ function checkExpressions() {
 function clearInputs() {
     expressionElements.forEach((expressionElement, index) => {
         const userAnswer = parseInt(inputs[index].value);
+
         if (userAnswer !== correctAnswers[index]) {
-            inputs[index].value = '';
             expressionElement.classList.remove('wrong_answer');
         }
-    })
+        if (userAnswer !== correctAnswers[index]) {
+            inputs[index].value = '';
+        }
+    });
     
     const allCorrect = correctAnswers.every((answer, index) => parseInt(inputs[index].value) === answer);
 
     if (allCorrect) {
         expressionElements.forEach(expressionElement => {
-        expressionElement.classList.remove('right_answer', 'wrong_answer');
+            expressionElement.classList.remove('right_answer', 'wrong_answer');
         });
         inputs.forEach(input => input.value = '');
         correctAnswers.length = 0;
         updateExpressions();
+        counter.innerText = '0/0';
+    }
+    else {
+        checkExpressions();
     }
 
     submitButton.innerText = 'Проверить';
@@ -71,14 +78,28 @@ function clearInputs() {
 }
 
 function updateExpressions() {
-  expressions.forEach(expr => {
-    const { expression, result } = generateExpression();
-    expr.innerText = expression;
-    correctAnswers.push(result);
-});
+    correctAnswers.length = 0;
+
+    expressions.forEach(expr => {
+        const { expression, result } = generateExpression();
+        expr.innerText = expression;
+        correctAnswers.push(result);
+    });
 }
 
 updateExpressions();
+
+inputs.forEach((input, index) => {
+    input.addEventListener('focus', () => {
+        const userAnswer = parseInt(input.value);
+        if (userAnswer !== correctAnswers[index]) {
+            input.value = '';
+            submitButton.innerText = 'Проверить';
+            expressionElements[index].classList.remove('wrong_answer');
+            isChecking = true;
+        }
+    });
+});
 
 submitButton.addEventListener('click', () => {
     if (isChecking) {
